@@ -1,5 +1,5 @@
-(defproject track "1.0.0-SNAPSHOT"
-  :description "FIXME: write description"
+(defproject opm "1.0.0-SNAPSHOT"
+  :description "Open Pump Monitor"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojure/java.jdbc "0.2.1"]
                  [org.clojure/data.json "0.1.2"]
@@ -9,7 +9,8 @@
                  [ring/ring-core "1.1.0"]
                  [mschristiansen/moustache "1.1.0"]
                  [ring-basic-authentication "1.0.1"]
-                 [hiccup "1.0.0"]]
+                 [hiccup "1.0.0"]
+                 [clj-http "0.4.1"]]
   :dev-dependencies [[ring/ring-jetty-adapter "1.1.0"]
                      [ring/ring-devel "1.1.0"]
                      [ring/ring-servlet "1.1.0"]
