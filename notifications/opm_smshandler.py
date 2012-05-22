@@ -1,7 +1,8 @@
 import httplib, urllib, _mysql
 
 def sendsms( msg, cellno ):
-	params = urllib.urlencode({'username': 'tomvdb', 'password': 'h4h123', 'message': msg, 'msisdn': cellno })
+    # replace username and password with your own bulksms credentials
+	params = urllib.urlencode({'username': 'username', 'password': 'password', 'message': msg, 'msisdn': cellno })
 	headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
 	conn = httplib.HTTPConnection("bulksms.2way.co.za:5567")
 	conn.request("POST", "/eapi/submission/send_sms/2/2.0", params, headers)
@@ -12,15 +13,16 @@ def sendsms( msg, cellno ):
 	
 # connect to db
 
-#sendsms( "Helo WOrld!", "27835004113")
-db = _mysql.connect(host="178.79.191.73",port=3306,user="beowulf",passwd="grindel",db="opm")
+# replaces these non-working usernames and passwords with your own account
+db = _mysql.connect(host="host",port=3306,user="user",passwd="password",db="opm")
 db.query("""select queue.id,pumps.name,contacts.number, status.voltage, queue.status from queue,pumps,contacts, status where queue.sent=0 and pumps.id=queue.pump and contacts.id=queue.contact and status.pump = pumps.id""")
 r=db.use_result()
 
 data = r.fetch_row()
 status = []
 
-updateStatus = _mysql.connect(host="178.79.191.73",port=3306,user="beowulf",passwd="grindel",db="opm")
+# replace the info with your own
+updateStatus = _mysql.connect(host="host",port=3306,user="user",passwd="password",db="opm")
 
 while len(data) > 0:
 #	print data
